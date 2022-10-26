@@ -1,11 +1,32 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from '../layouts/Layout.astro'
+import Card from '../components/Card.astro'
+import Simple from '../components/simple'
+
+const obj = { one: `two`, three: `four` }
+const arr = [ `one`, `two`, `three`, `four` ]
+const int = 25
+const flt = 22.5
+const boo = false
+const deep = {
+	...obj,
+	five: [ ...arr, true, boo, int, flt ]
+}
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
 		<h1>Welcome to <span class="text-gradient">Astro</span> Josh!</h1>
+		<Simple
+			client:load
+			text={ `Some simple text goes here` }
+			obj={ obj }
+			arr={ arr }
+			int={ int }
+			flt={ flt }
+			bool={ boo }
+			deep={ deep }
+		/>
 		<p class="instructions">
 			To get started, open the directory <code>src/pages</code> in your project.<br />
 			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
